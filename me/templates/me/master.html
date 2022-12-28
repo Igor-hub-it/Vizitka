@@ -1,0 +1,167 @@
+{% load static %}
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Montserrat:wght@200;400;700&display=swap');
+    * {
+        margin: 0;
+    }
+    header {
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        background: white;
+    }
+    .top-wrapper {
+        width: 100%;
+        height: auto;
+
+    }
+    .man-img {
+        height: 100%;
+    }
+    .pizda:after {
+        content: "";
+        width: 100%;
+        height: 850px;
+        position: absolute;
+        background: transparent;
+        background: linear-gradient(to top,#fff 0,rgba(105,90,166,.35) 99%,rgba(105,90,166,.5) 100%);
+        z-index: 1;
+    }
+    .header-img {
+        position: absolute;
+        top: -100px;
+        z-index: 0;
+        width: 100%;
+        height: 100vh;
+    }
+    .top-content {
+        height: 400px;
+        width: 80%;
+        position: relative;
+        top: 200px;
+        left: 10%;
+        {#border: solid 1px black;#}
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        z-index: 2;
+    }
+    .about-me {
+        width: 60%;
+        {#border: 1px solid #444444;#}
+    }
+    .about-me_suptitle {
+        font-size: 26px;
+        font-family: 'Montserrat';
+        font-weight: 200;
+        color: black;
+    }
+    .about-me_title {
+        font-size: 56px;
+        font-family: 'Balsamiq Sans';
+        font-weight: 700;
+        color: #695AA6;
+    }
+    .about-me_content {
+        font-size: 20px;
+        font-family: 'Montserrat';
+        font-weight: 400;
+        color: black;
+    }
+    .anchor {
+        padding: 20px;
+        position: relative;
+        top: 50px;
+        border: #695aa6 1px solid;
+        color: #695aa6;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 20px;
+    }
+    .anchor:hover {
+        transition: 0.15s;
+        color: white;
+        background: #695aa6;
+    }
+    .descriptor {
+        width: 100%;
+        height: 700px;
+        background: #695AA6;
+    }
+    .workplace {
+        width: 100%;
+        height: 500px;
+        background: rgba(105,90,166,.05);
+    }
+    .carousel {
+        width: 100%;
+        height: 200px;
+    }
+
+</style>
+<!--
+обо мне
+о студии и инструменте
+последние 3 работы
+примеры работ
+-->
+<body>
+    <header>
+
+    </header>
+    <main>
+        <div class="top-wrapper">
+            <div class="gradient"></div>
+            <a class="pizda">
+                <img class="header-img" src="static/imgs/header.jpg" alt="">
+            </a>
+            <div class="top-content">
+                <img src="static/imgs/man.png" alt="" class="man-img">
+                <div class="about-me">
+                    <div class="about-me_suptitle">Кто я такой?</div>
+                    <div class="about-me_title">Обо мне</div>
+                    <p class="about-me_content">
+                        Привет, я - Игорь, начинающий тату-мастер во Владивостоке.
+                        в данный момент ищу моделей для оттачивания скила и пополнения портфолио.
+                        ниже вы можете ознакомиться с моими работами и оборудованием, которым я работаю.
+                        Работы вополняю одноразовыми стерильными инструментами,
+                        в ходе работы соблюдаются все меры предосторожности, что обоспечит вам комфорт и безопасность.
+                    </p>
+                    <a class="anchor" href="#portfolio">Посмотреть мои работы</a>
+                </div>
+            </div>
+            <div class="descriptor">
+
+            </div>
+            <div class="workplace">
+                <div class="carousel">
+
+                </div>
+            </div>
+            <div class="tree-works">
+                <div class="three-imgs">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div id="portfolio" class="portfolio">
+
+            </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+
+    </script>
+</body>
+</html>
