@@ -1,69 +1,82 @@
-{% load static %}
 {% extends 'base.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
+{% block content %}
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Montserrat:wght@200;400;700&display=swap');
+
     * {
         margin: 0;
+        scroll-behavior: smooth;
     }
     header {
         width: 100%;
         height: 100px;
-        position: absolute;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: white 5px solid;
         background: white;
+        background: rgb(105,90,166);
+        background: linear-gradient(90deg, rgba(105,90,166,1) 0%, rgba(51,35,108,1) 65%, rgba(0,0,0,1) 100%);
+        animation: gradient 5s ease infinite;
+        background-size: 200% 400%;
+        z-index: 10;
+        cursor: pointer;
+        transition: .5s;
+    }
+    header:hover {
+        text-shadow: 0 0 10px #FFFFFF;
+        transition: .5s;
+    }
+    @keyframes gradient {
+        0% {
+            background-position: 0 50%;
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0 50%
+        }
+    }
+    .header_title {
+        color: white;
+        text-align: center;
+        font-size: 35px;
+        font-family: 'Montserrat';
     }
     .top-wrapper {
         width: 100%;
         height: auto;
-
+        background: rgb(252, 250, 255);
     }
     .man-img {
         height: 100%;
     }
-    .pizda:after {
-        content: "";
-        width: 100%;
-        height: 850px;
-        position: absolute;
-        background: transparent;
-        background: linear-gradient(to top,#fff 0,rgba(105,90,166,.35) 99%,rgba(105,90,166,.5) 100%);
-        z-index: 1;
-    }
-    .header-img {
-        position: absolute;
-        top: -100px;
-        z-index: 0;
-        width: 100%;
-        height: 100vh;
-    }
     .top-content {
-        height: 400px;
-        width: 80%;
-        position: relative;
-        top: 200px;
-        left: 10%;
-        {#border: solid 1px black;#}
+        height: 550px;
+        width: 85%;
+        margin: auto;
+        padding-top: 150px;
+        padding-bottom: 50px;
         border-radius: 10px;
         display: flex;
         justify-content: space-between;
         z-index: 2;
     }
     .about-me {
+        margin-top: 50px;
         width: 60%;
-        {#border: 1px solid #444444;#}
     }
-    .about-me_suptitle {
-        font-size: 26px;
-        font-family: 'Montserrat';
-        font-weight: 200;
-        color: black;
-    }
-    .about-me_title {
+    #about-me_title {
         font-size: 56px;
         font-family: 'Balsamiq Sans';
         font-weight: 700;
@@ -78,81 +91,245 @@
     .anchor {
         padding: 20px;
         position: relative;
-        top: 50px;
+        top: 45px;
         border: #695aa6 1px solid;
         color: #695aa6;
         border-radius: 30px;
         text-decoration: none;
         font-size: 20px;
+        transition: 0.5s;
+        font-family: 'Montserrat';
     }
     .anchor:hover {
-        transition: 0.15s;
+        transition: 0.5s;
         color: white;
         background: #695aa6;
     }
     .descriptor {
         width: 100%;
-        height: 700px;
-        background: #695AA6;
+        height: 650px;
+        background: rgb(105,90,166);
+        background: linear-gradient(90deg, rgba(105,90,166,1) 0%, rgba(51,35,108,1) 65%, rgba(0,0,0,1) 100%);
+        animation: gradient 5s ease infinite;
+        background-size: 200% 400%;
+    }
+    .descriptor_title {
+        padding-top: 30px;
+        color: white;
+        text-align: center;
+        font-size: 35px;
+        font-family: 'Montserrat';
+    }
+    .descriptor_content {
+        width: 80%;
+        margin: auto;
+        margin-top: 30px;
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: 48% 48%;
+        gap: 50px;
+    }
+    .description {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 5px;
+        border: solid 2px black;
+        background: rgb(249, 242, 255);
+    }
+    /* Добавляем анимацию к блоку */
+    .description-1-v1 {
+      animation: appear-left-disappear-right 8s infinite;
+      opacity: 0;
+      transform: translateX(-50px);
+        animation-delay: 0s;
+    }
+    .description-2-v1 {
+      animation: appear-left-disappear-right 8s infinite;
+      opacity: 0;
+      transform: translateX(-50px);
+        animation-delay: .2s;
+    }
+    .description-3-v1 {
+      animation: appear-left-disappear-right 8s infinite;
+      opacity: 0;
+      transform: translateX(-50px);
+        animation-delay: .4s;
+    }
+    .description-4-v1 {
+      animation: appear-left-disappear-right 8s infinite;
+      opacity: 0;
+      transform: translateX(-50px);
+        animation-delay: .6s;
+    }
+
+    /* Ключевые кадры */
+    @keyframes appear-left-disappear-right {
+      /* Появляемся слева */
+      0% {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      23% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      83% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      /* Исчезаем вправо */
+      96% {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+    }
+
+    .text {
+        padding: 10px;
+        font-family: 'Montserrat';
+        margin-bottom: 30px;
+        font-weight: 700;
+        font-size: 16px;
+    }
+    .text-ps {
+        font-family: 'Montserrat';
+        font-weight: 400;
+        font-size: 16px;
+    }
+    .descript-img {
+        height: 100%;
+        border-radius: 10px;
     }
     .workplace {
         width: 100%;
-        height: 500px;
-        background: rgba(105,90,166,.05);
     }
     .carousel {
         width: 100%;
-        height: 200px;
+        padding-top: 30px;
+        padding-bottom: 80px;
+        text-align: center;
+        background: rgb(252, 250, 255);
     }
-
+    .three-imgs {
+        padding-top: 50px;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+    }
+    .three-imgs_title {
+        font-weight: 400;
+        font-size: 35px;
+        font-family: 'Montserrat';
+    }
+    .work-example {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+    }
+    .img-title {
+        text-align: center;
+        font-family: 'Montserrat';
+        font-weight: 400;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    .imggg {
+        height: 100%;
+        width: auto;
+        border: #1b1b1b 2px solid;
+        border-radius: 10px;
+    }
+    footer {
+        width: 100%;
+        height: 200px;
+        background: rgb(105,90,166);
+        background: linear-gradient(90deg, rgba(105,90,166,1) 0%, rgba(51,35,108,1) 65%, rgba(0,0,0,1) 100%);
+        animation: gradient 5s ease infinite;
+        background-size: 200% 400%;
+    }
 </style>
 <!--
-обо мне
+обо мне +
 о студии и инструменте
-последние 3 работы
+последние 3 работы +
 примеры работ
 -->
 <body>
     <header>
-
+        <p class="header_title">Перейти в галерею работ</p>
     </header>
     <main>
         <div class="top-wrapper">
             <div class="gradient"></div>
-            <a class="pizda">
-                <img class="header-img" src="static/imgs/header.jpg" alt="">
-            </a>
             <div class="top-content">
-                <img src="static/imgs/man.png" alt="" class="man-img">
+                <img src="static/imgs/cartoon_me.png" alt="" class="man-img">
                 <div class="about-me">
-                    <div class="about-me_suptitle">Кто я такой?</div>
-                    <div class="about-me_title">Обо мне</div>
+                    <div id="about-me_title">Обо мне</div>
                     <p class="about-me_content">
                         Привет, я - Игорь, начинающий тату-мастер во Владивостоке.
                         в данный момент ищу моделей для оттачивания скила и пополнения портфолио.
                         ниже вы можете ознакомиться с моими работами и оборудованием, которым я работаю.
                         Работы вополняю одноразовыми стерильными инструментами,
-                        в ходе работы соблюдаются все меры предосторожности, что обоспечит вам комфорт и безопасность.
+                        в ходе работы со блюдаются все меры предосторожности, что обоспечит вам комфорт и безопасность.
                     </p>
                     <a class="anchor" href="#portfolio">Посмотреть мои работы</a>
                 </div>
             </div>
             <div class="descriptor">
-
+                <div class="descriptor_title">Мои иструменты и рабочее процесс татуировки</div>
+                <div class="descriptor_content">
+                    <div class="description description-1-v1">
+                        <div class="text">
+                            <div class="text_title">Краска</div>
+                            <p>В своих работах использую самую качественную краску Tattoo World Famous</p>
+                            <p class="text-ps">Самые разные цвета, огромная палитра цвета. Хоть радугу делай</p>
+                        </div>
+                        <img class="descript-img" src="static/imgs/bottle-img.png" alt="">
+                    </div>
+                    <div class="description description-2-v1">
+                        <div class="text">
+                            <div class="text_title">Картриджи</div>
+                            <p>Испобзуются самые качественные картриджи фирмы Kwadron</p>
+                        </div>
+                        <img class="descript-img" src="static/imgs/cartridges-img.png" alt="">
+                    </div>
+                    <div class="description description-3-v1">
+                        <div class="text">
+                            <div class="text_title">Машинка</div>
+                            <p>Роторная машинка фирмы Mix, хорошо вкрашивает пигмент и не травмирует кожу</p>
+                        </div>
+                        <img class="descript-img" src="" alt="">
+                    </div>
+                    <div class="description description-4-v1">
+                        <div class="text">
+                            <div class="text_title">Заживление</div>
+                            <p>Самая топовая заживляющая пленка, оригинальный Suprasorb</p>
+                        </div>
+                        <img class="descript-img" src="" alt="">
+                    </div>
+                </div>
             </div>
-            <div class="workplace">
+            <div id="portfolio" class="workplace">
                 <div class="carousel">
-
+                    <div class="three-imgs_title">Мои последние 3 работы</div>
+                    <div class="three-imgs">
+                        {% for work in work3 %}
+                            <div class="work-example">
+                                <div class="img-title">{{ work.title }}</div>
+                                <img src="{{ work.img.url }}" alt="" class="imggg">
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
             <div class="tree-works">
-                <div class="three-imgs">
-                    <img src="" alt="">
-                    <img src="" alt="">
-                    <img src="" alt="">
-                </div>
-            </div>
-            <div id="portfolio" class="portfolio">
 
             </div>
         </div>
@@ -164,4 +341,5 @@
 
     </script>
 </body>
+{% endblock %}
 </html>
