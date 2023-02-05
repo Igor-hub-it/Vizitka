@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*bl!8#e%e#70@ruf4b@0)^falx_i+^e99h77%7rq8^+rywtd1a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['tattoo-cube.ru']
+ALLOWED_HOSTS = ['87.249.44.53', 'tattoo-cube.ru']
 
 
 # Application definition
