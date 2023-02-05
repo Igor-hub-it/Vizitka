@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['tattoo-cube.ru']
+CSRF_TRUSTED_ORIGINS = ['https://tattoo-cube.ru']
 
 ROOT_URLCONF = 'Vizitka.urls'
 
