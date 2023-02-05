@@ -4,8 +4,123 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Montserrat:wght@200;400;700&display=swap');
+
+    * {
+        width: 100%;
+        margin: auto;
+        scroll-behavior: smooth;
+    }
+    a {
+        width: auto;
+        height: auto;
+        text-decoration: none;
+    }
+    header {
+        width: 100%;
+        height: 100px;
+        margin: auto;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: white 5px solid;
+        background: white;
+        background: rgb(105,90,166);
+        background: linear-gradient(90deg, rgba(105,90,166,1) 0%, rgba(51,35,108,1) 65%, rgba(0,0,0,1) 100%);
+        animation: gradient 5s ease infinite;
+        background-size: 200% 400%;
+        z-index: 10;
+        cursor: pointer;
+        transition: .5s;
+    }
+    header:hover {
+        text-shadow: 0 0 10px #FFFFFF;
+        transition: .5s;
+    }
+    @keyframes gradient {
+        0% {
+            background-position: 0 50%;
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0 50%
+        }
+    }
+    .header_title {
+        color: white;
+        text-align: center;
+        font-size: 35px;
+        font-family: 'Montserrat';
+    }
+    footer {
+        width: 100%;
+        height: 200px;
+        background: rgb(105,90,166);
+        background: linear-gradient(90deg, rgba(105,90,166,1) 0%, rgba(51,35,108,1) 65%, rgba(0,0,0,1) 100%);
+        animation: gradient 5s ease infinite;
+        background-size: 200% 400%;
+    }
+    .adress {
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+    .footer-content {
+        margin: auto;
+        width: 80%;
+        color: white;
+        font-size: 26px;
+        font-family: 'Montserrat';
+    }
+    .top-links {
+        width: auto;
+        display: flex;
+        gap: 10px;
+        margin-top: 30px;
+        margin-left: 0;
+    }
+    .bot-links {
+
+    }
+    .link-img {
+        width: 50px;
+    }
+    @media screen and (max-width: 1090px) {
+        header {
+            height: 160px;
+        }
+        .header_title {
+            font-size: 50px;
+        }
+        footer {
+            padding-bottom: 100px;
+        }
+    }
+</style>
+
 <body>
     {% block content %}
+
     {% endblock %}
+
+    <footer>
+        <div class="footer-content">
+            <div class="adress"><p>г. Владивосток, ул. Державина </p></div>
+            <div class="bot-links">
+                <a href="https://vk.com/vkysniyponchik">
+                    <img class="link-img" src="static/imgs/vk.png" alt="Ссылка на ВКонтакте">
+                </a>
+                <a href="https://t.me/Captain_Cobain">
+                    <img class="link-img" src="static/imgs/tg.png" alt="Ссылка на Телеграм">
+                </a>
+                <a href="">
+                    <img class="link-img" src="static/imgs/inst.png" alt="Ссылка на Инстаграм">
+                </a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

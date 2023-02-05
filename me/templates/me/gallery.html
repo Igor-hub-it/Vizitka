@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% block  content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Галерея</title>
+</head>
+<style>
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 1em;
+    }
+    .content {
+        padding-top: 200px;
+    }
+    .step-links {
+        width: 50%;
+        margin: auto;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .btn {
+        height: 50px;
+        width: 150px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        border: 1px solid #695aa6;
+        background: white;
+        font-family: 'Montserrat';
+        font-size: 24px;
+        color: #695aa6;
+        transition: .6s;
+    }
+    .btn > p {
+        width: auto;
+    }
+    .btn:hover {
+        background: #695aa6;
+        color: white;
+        transition: .6s;
+    }
+    .current-page-number {
+        height: 50px;
+        width: 50px;
+        border-radius: 10px;
+        background: white;
+        border: 1px solid #695aa6;
+        text-align: center;
+    }
+    .current-page-number:hover {
+        background: white;
+        border: 1px solid #695aa6;
+        color: #695aa6;
+    }
+    .content {
+        width: 80%;
+        padding-bottom: 100px;
+        display: grid;
+        grid-template-columns: 22% 22% 22% 22%;
+        gap: 5%;
+    }
+    .post {
+        width: 100%;
+        height: auto;
+        border: 1px solid black;
+        border-radius: 10px;
+        font-family: 'Montserrat';
+        background: #695aa6;
+        color: white;
+    }
+    .post-img {
+        width: 100%;
+        border-radius: 10px;
+    }
+    .text-box {
+        padding: 10px;
+    }
+    .img-title {
+        font-size: 30px;
+    }
+    @media screen and (max-width: 1090px) {
+        .content {
+            width: 90%;
+            grid-template-columns: 47% 47%;
+            gap: 6%;
+        }
+        .step-links {
+            width: 90%;
+            margin-top: 450px;
+        }
+        .btn {
+            height: 100px;
+            width: 25%;
+            font-size: 30px;
+        }
+        .current-page-number {
+            width: 15%;
+        }
+    }
+</style>
+<body>
+    <header>
+        <a href="{% url 'master' %}"><p class="header_title">Вернуться назад</p></a>
+    </header>
+    <div class="content">
+        {% for post in page_obj %}
+            <div class="post">
+                <img src="{{ post.img.url }}" alt="" class="post-img">
+                <div class="text-box">
+                    <div class="img-title">{{ post.title }}</div>
+                    <div class="post-description">{{ post.content }}</div>
+                    <div class="post-creation-date">{{ post.created_at }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a class="btn" href="?page=1"><p>Первая</p></a>
+                <a class="btn" href="?page={{ page_obj.previous_page_number }}"><p>&#10096;</p></a>
+            {% endif %}
+
+            <span class="current-page-number btn">
+                <p>{{ page_obj.number }}</p>
+            </span>
+
+
+            {% if page_obj.has_next %}
+                <a class="btn" href="?page={{ page_obj.next_page_number }}"><p>&#10097;</p></a>
+                <a class="btn" href="?page={{ page_obj.paginator.num_pages }}"><p>Последняя</p></a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>
+{% endblock %}
