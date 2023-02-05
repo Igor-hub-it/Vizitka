@@ -1,21 +1,24 @@
-# Используем образ Python
+# Use the Python image
 FROM python:3.8-alpine
 
-# Устанавливаем зависимости
+# Install dependencies
 RUN apk update && \
     apk add --no-cache build-base postgresql-dev libpq
 
-# Устанавливаем директорию для работы
+# Set the working directory
 WORKDIR /app
 
-# Копируем файлы проекта в директорию
-COPY . /app
+# Copy project files to the working directory
+COPY requirements.txt /app/
 
-# Устанавливаем зависимости проекта
+# Install project dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Задаем переменные окружения
+# Copy the rest of the project files
+COPY . /app
+
+# Set environment variables
 ENV PYTHONUNBUFFERED 1
 
-# Запускаем команду
+# Run the command
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
