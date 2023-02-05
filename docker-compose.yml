@@ -6,8 +6,6 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgrespw
-    depends_on:
-      - nginx
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -23,3 +21,5 @@ services:
       - "80:80"
     volumes:
       - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
