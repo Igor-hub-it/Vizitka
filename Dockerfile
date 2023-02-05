@@ -17,5 +17,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Задаем переменные окружения
 ENV PYTHONUNBUFFERED 1
 
+RUN python manage.py makemigrations
+RUN python manage.py migrate
+
 # Запускаем команду
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
