@@ -6,13 +6,22 @@
     <title>Галерея</title>
 </head>
 <style>
+    .title {
+        width: 90%;
+        margin: auto;
+        padding-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        font-family: 'Montserrat';
+    }
     .pagination {
       display: flex;
       justify-content: center;
       margin-top: 1em;
     }
     .content {
-        padding-top: 60px;
+        padding-top: 100px;
     }
     .step-links {
         width: 50%;
@@ -106,15 +115,19 @@
     }
 </style>
 <body>
+    <div class="title">
+        <h1>Халява</h1>
+        <h3>Здесь хранятся эскизы, которые мне хотелось бы сделать, поэтому прайс на них меньше</h3>
+    </div>
     <div class="content">
-        {% for post in page_obj %}
+        {% for sketch in page_obj %}
             <div class="post">
-                <img src="{{ post.img.url }}" alt="" class="post-img">
+                <img src="{{ sketch.img.url }}" alt="" class="post-img">
                 <div class="text-box">
-                    <div class="img-title">{{ post.title }}</div>
-                    <div class="post-description">{{ post.content }}</div>
-                    <!-- <div class="post-creation-date">{{ post.created_at }}</div> -->
+                    <div class="img-title">{{ sketch.title }}</div>
+                    <div class="post-description">{{ sketch.description }}</div>
                 </div>
+                <button class="order_btn"></button>
             </div>
         {% endfor %}
     </div>
@@ -140,3 +153,4 @@
 </body>
 </html>
 {% endblock %}
+</html>

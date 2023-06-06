@@ -21,7 +21,6 @@
         width: 100%;
         height: 100px;
         margin: auto;
-        position: fixed;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -105,6 +104,12 @@
 </style>
 
 <body>
+    <header>
+        <a href="{% url 'master' %}"><p class="header_title">Главная</p></a>
+        <a href="{% url 'gallery' %}"><p class="header_title">Галерея работ</p></a>
+        <a href="{% url 'freebie' %}"><p class="header_title">Халява</p></a>
+    </header>
+
     {% block content %}
 
     {% endblock %}
