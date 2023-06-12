@@ -42,10 +42,10 @@ def send_email_view(request):
     if request.method == 'POST':
         subject = request.POST.get('subject')
         message = request.POST.get('message')
-        from_email = request.POST.get('from_email')
-        to_email = request.POST.get('to_email')
+        from_email = 'igorpigidin@gmail.com'
+        to_email = 'igorpigidin@gmail.com'
 
         send_mail(subject, message, from_email, [to_email])
-        return render(request, 'success.html')
+        return render(request, 'me/success.html')
     else:
-        return render(request, 'email_form.html')
+        return render(request, 'me/success.html')
