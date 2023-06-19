@@ -35,7 +35,7 @@
         cursor: pointer;
         transition: .5s;
     }
-    header:hover {
+    a:hover {
         text-shadow: 0 0 10px #FFFFFF;
         transition: .5s;
     }
@@ -52,41 +52,35 @@
     }
     .header_title {
         color: white;
-        text-align: center;
         font-size: 35px;
         font-family: 'Montserrat';
     }
     footer {
         width: 100%;
-        height: 200px;
+        padding: 0 10% 0 10%;
+        display: flex;
+        justify-content: space-between; /* Выравнивание по краям */
         background: rgb(105,90,166);
         background: linear-gradient(90deg, rgba(105,90,166,1) 0%, rgba(51,35,108,1) 65%, rgba(0,0,0,1) 100%);
         animation: gradient 5s ease infinite;
         background-size: 200% 400%;
     }
-    .adress {
-        padding-top: 20px;
-        padding-bottom: 30px;
-    }
     .footer-content {
-        margin: auto;
-        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
         color: white;
         font-size: 26px;
         font-family: 'Montserrat';
     }
-    .top-links {
-        width: auto;
+    .social-link {
+        width: 40px;
+        height: 40px;
+    }
+    .links {
         display: flex;
-        gap: 10px;
-        margin-top: 30px;
-        margin-left: 0;
-    }
-    .bot-links {
-
-    }
-    .link-img {
-        width: 50px;
+        flex-direction: column;
+        gap: 10px!important;
     }
     @media screen and (max-width: 1090px) {
         header {
@@ -95,41 +89,44 @@
         .header_title {
             font-size: 50px;
         }
-        footer {
-            padding-bottom: 100px;
-        }
         .link-img {
-            width: 120px;
+            width: 50px;
         }
     }
 </style>
 
 <body>
     <header>
-        <a href="{% url 'master' %}"><p class="header_title">Главная</p></a>
-        <a href="{% url 'gallery' %}"><p class="header_title">Галерея работ</p></a>
-        <a href="{% url 'freebie' %}"><p class="header_title">Халява</p></a>
-        <a href="{% url 'instructions' %}"><p class="header_title">Инструкция по заживлению</p></a>
+        <a href="{% url 'master' %}"><p class="header_title fs-4">Главная</p></a>
+        <a href="{% url 'gallery' %}"><p class="header_title fs-4">Галерея работ</p></a>
+        <a href="{% url 'freebie' %}"><p class="header_title fs-4">Халява</p></a>
+        <a href="{% url 'instructions' %}"><p class="header_title fs-4">Инструкция по заживлению</p></a>
     </header>
 
     {% block content %}
 
     {% endblock %}
 
-    <footer class="">
-        <div class="footer-content">
-            <div class="adress"><p>г. Владивосток, ул. Державина </p></div>
-            <div class="bot-links">
-                <a href="https://vk.com/vkysniyponchik">
+    <footer class="py-3">
+        <div class="footer-content w-auto m-0">
+            <p class="fs-5 w-auto">г. Владивосток, ул. Державина </p>
+            <div class="d-flex w-auto gap-3 m-0">
+                <a class="social-link" href="https://vk.com/vkysniyponchik">
                     <img class="link-img" src="static/imgs/vk.png" alt="Ссылка на ВКонтакте">
                 </a>
-                <a href="https://t.me/Captain_Cobain">
+                <a class="social-link" href="https://t.me/Captain_Cobain">
                     <img class="link-img" src="static/imgs/tg.png" alt="Ссылка на Телеграм">
                 </a>
-                <a href="">
+                <a class="social-link" href="">
                     <img class="link-img" src="static/imgs/inst.png" alt="Ссылка на Инстаграм">
                 </a>
             </div>
+        </div>
+        <div class="links w-auto m-0 ">
+            <a class="w-auto fs-5 text-white m-0" href="{% url 'master' %}">Главная</a>
+            <a class="w-auto fs-5 text-white m-0" href="{% url 'gallery' %}">Галерея работ</a>
+            <a class="w-auto fs-5 text-white m-0" href="{% url 'freebie' %}">Халява</a>
+            <a class="w-auto fs-5 text-white m-0" href="{% url 'instructions' %}">Инструкция по заживлению</a>
         </div>
     </footer>
 </body>
